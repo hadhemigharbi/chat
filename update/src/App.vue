@@ -1,6 +1,6 @@
 <template>   
 <div class="app">
-  <h1 class="text-3xl font-extrabold uppercase flex justify-center mt-6"></h1>               
+  <h1 class="text-3xl font-extrabold uppercase flex justify-center mt-6">Hello</h1>               
   <Appmain />
 </div>
 </template>
