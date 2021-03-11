@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Appmain from './components/UI';
+import UI from './components/UI';
 export default {
   name: 'App',
   components: { UI },
