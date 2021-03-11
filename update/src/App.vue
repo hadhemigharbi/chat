@@ -1,21 +1,24 @@
 <template>   
-<div class="app">
-  <h1 class="text-3xl font-extrabold uppercase flex justify-center mt-6">Hello</h1>               
-  <Appmain />
+<div class="app">              
+  <UI />
 </div>
 </template>
 
 <script>
-import Appmain from './components/Appmain';
+import Appmain from './components/UI';
 export default {
   name: 'App',
-  components: { Appmain },
+  components: { UI },
   
 }
 </script>
 
 <style lang="scss">
-h1 {
-  color: #Fe2336;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>
