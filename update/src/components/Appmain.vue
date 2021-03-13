@@ -1,28 +1,38 @@
 <template>
   <form
+  id="demo"
     class="rounded mx-auto max-w-3xl w-full my-6 inputs space-y-4 bg-center"
+    method="get"
+    @submit="getUsers"
   >
-  
     <div class="flex flex-nowrap space-x-4">
       <div class="card mr-4 mb-10 mt-10">
-        <h1 class="text-gray-200 font-bold uppercase flex justify-center mt-6">Welcome With US !</h1>
+        <h1 class="text-gray-200 font-bold uppercase flex justify-center mt-6">
+          Welcome With US !
+        </h1>
         <div class="mt-4 mr-4 px-20 space-x-0">
-            <button class="justify-center"><i class="fab fa-google px-2 text-gray-50 text-3xl"></i></button>
-            <button class="rounded-full"><i class="fab fa-facebook px-2 text-gray-50 text-3xl"></i></button>
-            <button class="rounded-full"><i class="fab fa-twitter px-2 text-gray-50 text-3xl"></i></button>
+          <button class="justify-center">
+            <i class="fab fa-google px-2 text-gray-50 text-3xl"></i>
+          </button>
+          <button class="rounded-full">
+            <i class="fab fa-facebook px-2 text-gray-50 text-3xl"></i>
+          </button>
+          <button class="rounded-full">
+            <i class="fab fa-twitter px-2 text-gray-50 text-3xl"></i>
+          </button>
         </div>
         <div class="mt-4">
           <label for="username" class="font-black">Username</label>
           <input
             class="placeholder-gray-500 placeholder-opacity-100 border border-gray-400 px-4 py-2 rounded w-full focus:outline-none focus:ring focus:border-blue-300"
             type="input"
-            name="address"
-            id="address"
+            name="username"
+            id="username"
             placeholder="Username"
             maxlength="20"
             minlength="4"
             v-model="username"
-            required
+            
           />
         </div>
         <div class="mt-4">
@@ -34,9 +44,9 @@
             id="address"
             placeholder="Example@gmail.com"
             maxlength="200"
-            minlength="20"
+            minlength="10"
             v-model="address"
-            required
+            
           />
         </div>
 
@@ -49,15 +59,15 @@
             id="password"
             placeholder="**************"
             maxlength="200"
-            minlength="20"
+            minlength="8"
             v-model="password"
             onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57));"
-            required
+            
           />
         </div>
 
         <div>
-          <input type="checkbox" class="rounded text-pink-500 mt-4" required />
+          <input type="checkbox" class="rounded text-pink-500 mt-4"/>
           <label class="font-mono tracking-tighter"
             >&nbsp; I Agree to the terms of users</label
           >
@@ -67,7 +77,9 @@
             <div class="flex space-x-4">
               <button
                 type="submit"
-                class="bg-white px-4 py-2 rounded-full font-semibold text-yellow-600 transform hover:scale-110 motion-reduce:transform-none">
+                class="bg-white px-4 py-2 rounded-full font-semibold text-yellow-600 transform hover:scale-110 motion-reduce:transform-none"
+                @click="persist"
+              >
                 SIGN UP
               </button>
             </div>
@@ -76,11 +88,19 @@
       </div>
 
       <div class="cardtwo mr-4 mb-10 mt-10">
-        <h1 class="text-gray-200 font-bold uppercase flex justify-center mt-8">Hello, Friends !</h1>
+        <h1 class="text-gray-200 font-bold uppercase flex justify-center mt-8">
+          Hello, Friends !
+        </h1>
         <div class="mt-4 mr-4 space-x-2 px-20">
-            <button class="rounded-full px-2"><i class="fab fa-google text-gray-50 text-3xl"></i></button>
-            <button class="rounded-full px-2"><i class="fab fa-facebook text-gray-50 text-3xl"></i></button>
-            <button class="rounded-full px-2"><i class="fab fa-twitter text-gray-50 text-3xl"></i></button>
+          <button class="rounded-full px-2">
+            <i class="fab fa-google text-gray-50 text-3xl"></i>
+          </button>
+          <button class="rounded-full px-2">
+            <i class="fab fa-facebook text-gray-50 text-3xl"></i>
+          </button>
+          <button class="rounded-full px-2">
+            <i class="fab fa-twitter text-gray-50 text-3xl"></i>
+          </button>
         </div>
         <div class="mt-16">
           <label for="address" class="font-black">Email</label>
@@ -91,12 +111,12 @@
             id="address"
             placeholder="Example@gmail.com"
             maxlength="200"
-            minlength="20"
-            v-model="address"
-            required
+            minlength="10"
+            v-model="address2"
+            
           />
         </div>
-          <div class="mt-4">
+        <div class="mt-4">
           <label for="password" class="font-black">Password</label>
           <input
             class="placeholder-gray-500 placeholder-opacity-100 border border-gray-400 px-4 py-2 rounded w-full focus:outline-none focus:ring focus:border-blue-300"
@@ -105,31 +125,66 @@
             id="password"
             placeholder="**************"
             maxlength="200"
-            minlength="20"
-            v-model="password"
+            minlength="8"
+            v-model="password2"
             onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57));"
-            required
+            
           />
-          <h3 class="text-gray-200 font-mono tracking-tighter flex justify-center mt-8">Forget Your Password?</h3>
+          <h3
+            class="text-gray-200 font-mono tracking-tighter flex justify-center mt-8"
+          >
+            Forget Your Password?
+          </h3>
         </div>
-                    
+
         <div class="px-8 py-4 mt-4 flex justify-center">
-            <div class="flex">
-              <button
-                type="submit"
-                class="bg-white px-4 py-2 mt-2 rounded-full font-semibold text-yellow-700 transform hover:scale-110 motion-reduce:transform-none">
-                SIGN IN
-              </button>
-            </div>             
+          <div class="flex">
+            <button
+              type="submit"
+              class="bg-white px-4 py-2 mt-2 rounded-full font-semibold text-yellow-700 transform hover:scale-110 motion-reduce:transform-none"
+            >
+              SIGN IN
+            </button>
           </div>
+        </div>
       </div>
     </div>
   </form>
 </template>
 
 <script>
-export default { };
+import axios from "axios";
+export default {
+  el: '#app',
+  mounted() {
+     axios.get("http://localhost:3000/users/All")
+    .then((reponse) => {
+      this.users = reponse;
+      console.log(this.users);
+    });
+    if (localStorage.username) {
+      this.username = localStorage.username;
+    }
+    if (localStorage.address) {
+      this.address = localStorage.address;
+    }
+    if (localStorage.password) {
+    this.password = localStorage.password;
+    }
+  },
+  methods: {
+    persist() {
+      localStorage.username = this.username;
+      localStorage.address = this.address;
+      localStorage.password = this.password;
+      console.log('Success');
+    }
+  },
+
+};
+
 </script>
+
 
 <style lang="scss" scoped>
 .card {
