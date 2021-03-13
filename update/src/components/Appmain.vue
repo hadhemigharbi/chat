@@ -1,9 +1,7 @@
 <template>
   <form
-  id="demo"
     class="rounded mx-auto max-w-3xl w-full my-6 inputs space-y-4 bg-center"
     method="get"
-    @submit="getUsers"
   >
     <div class="flex flex-nowrap space-x-4">
       <div class="card mr-4 mb-10 mt-10">
